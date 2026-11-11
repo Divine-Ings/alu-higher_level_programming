@@ -84,9 +84,9 @@ Python also reuses some immutable objects to save memory. CPython keeps one obje
 True
 >>> () is ()
 True
->>> (1, 2) is (1, 2)   # in the interactive shell, each line is compiled separately
-False
 ```
+
+The result of `is` on equal immutable values depends on how the code is compiled. In a script, identical constants in the same piece of code are merged, so `a = (1, 2)` and `b = (1, 2)` (or two identical string literals) end up pointing to the same object and `a is b` is `True`. In the interactive shell each line is compiled separately, so the same code can give `False`. This is an optimization, not a guarantee, so use `==` to compare values and `is` only for identity (for example `x is None`).
 
 Note that `(1)` is not a tuple, it is just the integer 1 in parentheses. A one-element tuple needs a trailing comma: `(1,)`. A tuple is immutable, but if it holds a mutable object, that inner object can still change.
 
