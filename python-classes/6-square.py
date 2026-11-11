@@ -1,11 +1,31 @@
 #!/usr/bin/python3
+"""Module 6-square.
+
+Defines a class Square with a size and a position used when printing.
+"""
+
+
 class Square:
+    """Represent a square with a validated size and position."""
+
     def __init__(self, size=0, position=(0, 0)):
+        """Initialize a new Square.
+
+        Args:
+            size (int): the size of the new square.
+            position (tuple): the (x, y) offset used when printing.
+        """
         self.size = size
         self.position = position
 
     @property
     def size(self):
+        """Get or set the current size of the square.
+
+        Raises:
+            TypeError: if the value set is not an integer.
+            ValueError: if the value set is less than 0.
+        """
         return self.__size
 
     @size.setter
@@ -18,6 +38,12 @@ class Square:
 
     @property
     def position(self):
+        """Get or set the current position of the square.
+
+        Raises:
+            TypeError: if the value set is not a tuple of 2 positive
+                integers.
+        """
         return self.__position
 
     @position.setter
@@ -28,9 +54,14 @@ class Square:
         self.__position = value
 
     def area(self):
+        """Return the current area of the square."""
         return self.__size ** 2
 
     def my_print(self):
+        """Print the square with the character #, using its position.
+
+        If the size is 0, an empty line is printed.
+        """
         if self.__size == 0:
             print()
             return
