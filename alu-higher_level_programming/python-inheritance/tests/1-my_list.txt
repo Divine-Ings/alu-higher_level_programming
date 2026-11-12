@@ -1,0 +1,81 @@
+The ``1-my_list`` module
+========================
+
+Using ``MyList``
+----------------
+
+Import the class:
+
+    >>> MyList = __import__('1-my_list').MyList
+
+An empty list prints as an empty list:
+
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
+
+Elements are printed in ascending order and the list is not modified:
+
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+A list that is already sorted:
+
+    >>> my_list = MyList([1, 2, 3])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+
+A list sorted in reverse order:
+
+    >>> my_list = MyList([3, 2, 1])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+
+Negative numbers:
+
+    >>> my_list = MyList([3, -1, 0, -5, 2])
+    >>> my_list.print_sorted()
+    [-5, -1, 0, 2, 3]
+
+Duplicate values:
+
+    >>> my_list = MyList([2, 1, 2, 1])
+    >>> my_list.print_sorted()
+    [1, 1, 2, 2]
+
+A single element:
+
+    >>> my_list = MyList([7])
+    >>> my_list.print_sorted()
+    [7]
+
+``MyList`` is a ``list``:
+
+    >>> issubclass(MyList, list)
+    True
+    >>> isinstance(MyList(), list)
+    True
+
+The sorted output is a new list, the original keeps its order:
+
+    >>> my_list = MyList([5, 3, 4])
+    >>> my_list.print_sorted()
+    [3, 4, 5]
+    >>> my_list
+    [5, 3, 4]
+
+``print_sorted`` takes no argument:
+
+    >>> my_list.print_sorted(1)  # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError: ...print_sorted() takes 1 positional argument but 2 were given
